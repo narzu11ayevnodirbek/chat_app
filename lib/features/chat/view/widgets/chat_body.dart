@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:chat_app/core/extensions/num_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,6 +14,10 @@ class ChatBody extends StatefulWidget {
 }
 
 class _ChatBodyState extends State<ChatBody> {
+  bool isImage(String msg) {
+    return msg.length > 100 && msg.contains(RegExp(r'^[A-Za-z0-9+/=]+$'));
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -80,7 +86,10 @@ class _ChatBodyState extends State<ChatBody> {
                               ),
                             ),
 
-                            child: Text(data.message),
+                            // child: Text(data.message),
+                            child: isImage(data.message)
+                                ? Image.memory(base64Decode(data.message))
+                                : Text(data.message),
                           ),
                         ),
                       ],

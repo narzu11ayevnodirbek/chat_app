@@ -17,6 +17,9 @@ dependencies:
   json_annotation: ^4.8.1
   path_provider: ^2.1.5
   web_socket_channel: ^3.0.3
+  image_picker: ^1.1.2
+  path: ^1.9.1
+  flutter_image_compress: ^2.4.0
 
 dev_dependencies:
   flutter_test:
